@@ -7,7 +7,7 @@ dotenv.config();
 
 Before(async function () {
   // `this` is CustomWorld
-  this.browser = await chromium.launch({ headless: false }); // change to true in CI
+  this.browser = await chromium.launch({ headless: true }); // change to true in CI
   this.page = await this.browser.newPage();
 });
 
