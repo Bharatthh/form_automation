@@ -78,9 +78,10 @@ jobs:
           
           Regards,
           GitHub Actions
-        to: bharathsha46@gmail.com
+        to: ${{ secrets.EMAIL_RECIPIENTS }}
         from: ${{ secrets.EMAIL }}
         attachments: reports/html-report.html
+        
 
     
 
