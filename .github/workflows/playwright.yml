@@ -59,5 +59,29 @@ jobs:
         name: cucumber-report
         path: reports/
         retention-days: 30
+    - name: Send Test Report Email
+      if: always()   # Send email even if test fails
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        secure: true
+        username: ${{ secrets.EMAIL }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: "Playwright Cucumber Test Report"
+        body: |
+          Hello,
+          
+          The scheduled automation test execution has completed.
+          
+          Please find the attached HTML report.
+          
+          Regards,
+          GitHub Actions
+        to: bharathsha46@gmail.com
+        from: ${{ secrets.EMAIL }}
+        attachments: reports/html-report.html
+
+    
 
 
